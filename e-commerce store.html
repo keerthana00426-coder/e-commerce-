@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lumé – small things for slow days</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F2FB;--surface:#fff;--ink:#2A1F3D;--mute:#6B6080;--lav:#E3DAF3;--blush:#F8D9DC;--sage:#D3E3D0;--butter:#F6E7A8;--accent:#5B3FA0;--line:#2a1f3d1f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17121F;--surface:#221B2F;--ink:#F1EBFA;--mute:#A99CC2;--lav:#3A2E57;--blush:#5A3A45;--sage:#34493A;--butter:#5E5530;--accent:#B9A2F0;--line:#f1ebfa26}}
+:root[data-theme="dark"]{--bg:#17121F;--surface:#221B2F;--ink:#F1EBFA;--mute:#A99CC2;--lav:#3A2E57;--blush:#5A3A45;--sage:#34493A;--butter:#5E5530;--accent:#B9A2F0;--line:#f1ebfa26}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:Gloock,Georgia,serif;font-weight:400;line-height:1.05;margin:0}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.promo{background:var(--ink);color:var(--bg);text-align:center;font-size:14px;padding:8px 16px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:28px;height:68px}
+.logo{font-family:Gloock,serif;font-size:30px}
+.nav nav{display:flex;gap:24px;margin-left:auto;font-size:15px;color:var(--mute)}
+.nav nav a:hover{color:var(--ink)}
+.cartbtn{background:var(--ink);color:var(--bg);border:0;border-radius:99px;padding:9px 18px;font-weight:600}
+.cartbtn b{background:var(--butter);color:#2A1F3D;border-radius:99px;padding:1px 8px;margin-left:6px;font-size:13px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:64px 0 48px}
+.hero h1{font-size:clamp(46px,7vw,92px);letter-spacing:-.02em}
+.hero p{max-width:44ch;color:var(--mute);font-size:18px;margin:22px 0 30px}
+.btn{display:inline-block;border:0;border-radius:99px;padding:14px 28px;font-weight:600;background:var(--accent);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);margin-left:10px}
+.arch{position:relative;height:460px}
+.arch .a1{position:absolute;inset:0 18% 0 0;background:var(--lav);border-radius:999px 999px 28px 28px;display:grid;place-items:end center}
+.arch .a2{position:absolute;right:0;bottom:0;width:46%;height:56%;background:var(--blush);border-radius:999px 999px 28px 28px;display:grid;place-items:end center}
+.arch svg{width:88%;height:auto}
+.arch .a2 svg{width:80%}
+.sec{padding:56px 0}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.sec-h h2{font-size:clamp(32px,4vw,48px)}
+.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.cat{border:0;border-radius:22px;padding:18px 18px 8px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;min-height:190px;transition:transform .2s}
+.cat:hover{transform:translateY(-4px)}
+.cat strong{font-family:Gloock,serif;font-weight:400;font-size:22px}
+.cat span{font-size:14px;color:var(--mute)}
+.cat svg{width:78px;align-self:flex-end}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{border:1.5px solid var(--line);background:transparent;border-radius:99px;padding:7px 16px;font-size:14px}
+.tab[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card{background:var(--surface);border-radius:22px;padding:12px 12px 18px;display:flex;flex-direction:column}
+.thumb{position:relative;border-radius:16px;aspect-ratio:1;display:grid;place-items:center}
+.thumb svg{width:68%}
+.badge{position:absolute;top:10px;left:10px;background:var(--surface);border-radius:99px;font-size:12px;font-weight:600;padding:2px 10px}
+.card h3{font-family:Figtree,sans-serif;font-weight:600;font-size:16px;line-height:1.3;margin:14px 6px 2px}
+.meta{margin:0 6px;font-size:13px;color:var(--mute)}
+.row{display:flex;justify-content:space-between;align-items:center;margin:12px 6px 0}
+.price{font-weight:600}.price s{color:var(--mute);font-weight:400;margin-left:6px;font-size:14px}
+.add{border:1.5px solid var(--ink);background:transparent;border-radius:99px;padding:6px 14px;font-size:14px;font-weight:600;transition:background .2s,color .2s}
+.add:hover,.add.done{background:var(--ink);color:var(--bg)}
+.offers{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+.offer{border-radius:28px;padding:36px;display:flex;flex-direction:column;justify-content:space-between;min-height:260px;color:#2A1F3D}
+.offer h3{font-size:clamp(28px,3.4vw,42px);margin-bottom:10px}
+.offer p{margin:0 0 20px;max-width:36ch}
+.offer .btn{background:#2A1F3D;color:#fff;align-self:flex-start}
+.code{display:inline-block;border:2px dashed #2A1F3D;border-radius:12px;padding:6px 14px;font-weight:600;letter-spacing:.06em;margin-bottom:18px;align-self:flex-start}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{background:var(--surface);border-radius:22px;padding:26px}
+.stars{color:var(--accent);letter-spacing:2px}
+.rev p{margin:12px 0 18px}
+.who{display:flex;align-items:center;gap:12px;font-size:14px}
+.av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:600;color:#2A1F3D}
+.who small{display:block;color:var(--mute)}
+.perks{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;font-size:15px}
+.perks b{display:block}.perks span{color:var(--mute);font-size:14px}
+.news{background:var(--lav);border-radius:32px;padding:56px;text-align:center}
+.news h2{font-size:clamp(30px,4vw,44px)}
+.news p{color:var(--mute);margin:12px auto 24px;max-width:46ch}
+.news form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.news input{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:13px 20px;min-width:260px;font:inherit}
+footer{padding:48px 0 36px;color:var(--mute);font-size:14px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .logo{color:var(--ink)}
+.scrim{position:fixed;inset:0;background:#0007;opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);z-index:50;transform:translateX(100%);transition:transform .3s;display:flex;flex-direction:column;padding:calc(20px + env(safe-area-inset-top,0px)) 22px calc(20px + env(safe-area-inset-bottom,0px))}
+.drawer.on{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center}
+.dh h2{font-size:28px}
+.x{border:0;background:var(--lav);width:36px;height:36px;border-radius:50%;font-size:18px}
+.items{flex:1;overflow:auto;margin:16px 0}
+.it{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.it .t{border-radius:12px;aspect-ratio:1;display:grid;place-items:center}.it .t svg{width:70%}
+.qty{display:flex;align-items:center;gap:8px;margin-top:4px}
+.qty button{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);background:transparent;line-height:1}
+.empty{color:var(--mute);text-align:center;padding:40px 10px}
+.ship{font-size:13px;color:var(--mute)}
+.bar{height:6px;background:var(--lav);border-radius:9px;margin:6px 0 14px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.cp{display:flex;gap:8px;margin-bottom:12px}
+.cp input{flex:1;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:9px 16px;font:inherit}
+.cp button{border:1.5px solid var(--ink);background:transparent;border-radius:99px;padding:0 16px;font-weight:600}
+.tot{display:flex;justify-content:space-between;font-weight:600;font-size:18px;margin:6px 0 14px}
+.sm{display:flex;justify-content:space-between;color:var(--mute);font-size:14px}
+.btn.full{width:100%;text-align:center;border:0}
+@media (max-width:960px){.hero{grid-template-columns:1fr}.arch{height:360px}.cats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}.offers,.reviews{grid-template-columns:1fr}.perks{grid-template-columns:repeat(2,1fr)}.nav nav{display:none}.cartbtn{margin-left:auto}}
+@media (max-width:520px){.wrap{padding:0 16px}.grid{gap:12px}.news{padding:36px 20px}.offer{padding:26px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="promo">Free shipping over ₹1,999 · Use code LUME10 for 10% off your first order</div>
+<header><div class="wrap nav">
+  <a class="logo" href="#top">Lumé</a>
+  <nav aria-label="Main"><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#offers">Offers</a><a href="#reviews">Reviews</a></nav>
+  <button class="cartbtn" id="open" aria-label="Open cart">Cart<b id="count">0</b></button>
+</div></header>
+
+<main id="top">
+<section class="wrap hero">
+  <div>
+    <h1>Small things for slow days.</h1>
+    <p>Hand-poured candles, glazed ceramics, gentle skincare and paper goods, chosen to make an ordinary Tuesday feel considered.</p>
+    <a class="btn" href="#shop">Shop new arrivals</a><a class="btn ghost" href="#offers">See offers</a>
+  </div>
+  <div class="arch" aria-hidden="true">
+    <div class="a1" id="h1"></div><div class="a2" id="h2"></div>
+  </div>
+</section>
+
+<section class="wrap sec" id="categories">
+  <div class="sec-h"><h2>Shop by category</h2></div>
+  <div class="cats" id="cats"></div>
+</section>
+
+<section class="wrap sec" id="shop">
+  <div class="sec-h"><h2>Featured this week</h2><div class="tabs" id="tabs" role="group" aria-label="Filter products"></div></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="wrap sec" id="offers">
+  <div class="offers">
+    <div class="offer" style="background:var(--butter)">
+      <div><h3>The Slow Sunday set</h3><p>A candle, a mug and a notebook in one box. Save 20% when you bundle all three.</p></div>
+      <button class="btn" id="bundle">Add the set to cart</button>
+    </div>
+    <div class="offer" style="background:var(--sage)">
+      <div><h3>First order? Take 10% off</h3><p>Enter the code at checkout.</p></div>
+      <span class="code">LUME10</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec" id="reviews">
+  <div class="sec-h"><h2>Kind words from our customers</h2><span class="stars" aria-label="4.9 out of 5">★★★★★ <span style="color:var(--mute);letter-spacing:0">4.9 from 2,300+ reviews</span></span></div>
+  <div class="reviews">
+    <article class="rev"><div class="stars">★★★★★</div><p>The Fig &amp; Cedar candle burned evenly for over 40 hours and my whole flat smells like a quiet bookshop. Already ordered a second.</p><div class="who"><span class="av" style="background:var(--blush)">A</span><div>Ananya R.<small>Verified buyer · Hyderabad</small></div></div></article>
+    <article class="rev"><div class="stars">★★★★★</div><p>The speckled mug feels hand-made and is the right weight. It arrived wrapped in recycled paper with no plastic at all.</p><div class="who"><span class="av" style="background:var(--sage)">K</span><div>Karthik M.<small>Verified buyer · Bengaluru</small></div></div></article>
+    <article class="rev"><div class="stars">★★★★☆</div><p>The barrier serum is light and my skin stopped feeling tight in a week. Delivery was quick, and support answered within an hour.</p><div class="who"><span class="av" style="background:var(--butter)">S</span><div>Sana P.<small>Verified buyer · Vijayawada</small></div></div></article>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="perks">
+    <div><b>Free shipping</b><span>On orders over ₹1,999</span></div>
+    <div><b>Easy returns</b><span>30 days, no questions</span></div>
+    <div><b>Secure payment</b><span>UPI, cards and COD</span></div>
+    <div><b>Plastic-free packing</b><span>Recycled and recyclable</span></div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="news">
+    <h2>Get first look at new drops</h2>
+    <p>One email a month with new arrivals and early access to sales. Unsubscribe any time.</p>
+    <form id="nl"><input type="email" required placeholder="you@example.com" aria-label="Email address"><button class="btn" type="submit">Subscribe</button></form>
+    <p id="nlmsg" role="status" style="margin:14px auto 0"></p>
+  </div>
+</section>
+</main>
+
+<footer class="wrap"><span class="logo">Lumé</span><span>© 2026 Lumé Home &amp; Body. Made with care in India.</span></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="dh"><h2>Your cart</h2><button class="x" id="close" aria-label="Close cart">×</button></div>
+  <div class="items" id="items"></div>
+  <div>
+    <div class="ship" id="shiptxt"></div><div class="bar"><i id="shipbar"></i></div>
+    <div class="cp"><input id="cin" placeholder="Discount code" aria-label="Discount code"><button id="capply">Apply</button></div>
+    <div class="sm"><span>Subtotal</span><span id="sub">₹0</span></div>
+    <div class="sm"><span id="dlabel"></span><span id="disc"></span></div>
+    <div class="tot"><span>Total</span><span id="total">₹0</span></div>
+    <button class="btn full" id="checkout">Checkout</button>
+  </div>
+</aside>
+
+<script>
+var P=[
+{id:1,n:"Fig & Cedar candle",c:"Candles",p:899,o:1199,t:"candle",bg:"blush",k:"#C98B94",r:4.9,b:"Bestseller"},
+{id:2,n:"Speckled stoneware mug",c:"Ceramics",p:649,o:0,t:"mug",bg:"butter",k:"#8E7BC7",r:4.8,b:""},
+{id:3,n:"Bud vase, matte sage",c:"Ceramics",p:1099,o:0,t:"vase",bg:"sage",k:"#7FA383",r:4.7,b:"New"},
+{id:4,n:"Barrier repair serum",c:"Skincare",p:1349,o:1599,t:"bottle",bg:"lav",k:"#5B3FA0",r:4.9,b:"–16%"},
+{id:5,n:"Linen-bound notebook",c:"Stationery",p:449,o:0,t:"book",bg:"sage",k:"#E3A5AB",r:4.6,b:""},
+{id:6,n:"Oat milk body wash",c:"Skincare",p:599,o:0,t:"tube",bg:"butter",k:"#E2B04A",r:4.8,b:"New"},
+{id:7,n:"Stonewashed linen cushion",c:"Textiles",p:1499,o:1899,t:"cushion",bg:"blush",k:"#9AA5D9",r:4.7,b:"–21%"},
+{id:8,n:"Soy wax candle, lavender",c:"Candles",p:799,o:0,t:"candle",bg:"lav",k:"#9A85D6",r:4.8,b:""}
+];
+var CATS=[["Candles","blush","candle","#C98B94"],["Ceramics","butter","vase","#8E7BC7"],["Skincare","lav","bottle","#5B3FA0"],["Stationery","sage","book","#E3A5AB"],["Textiles","blush","cushion","#9AA5D9"]];
+function art(t,k){
+ var s='<svg viewBox="0 0 120 120" aria-hidden="true">',w='#FFFDF8',d='#2A1F3D';
+ var m={
+ candle:'<rect x="34" y="48" width="52" height="56" rx="10" fill="'+k+'"/><rect x="34" y="48" width="52" height="12" rx="6" fill="'+w+'" opacity=".5"/><path d="M60 22c10 10 6 18 0 22-6-4-10-12 0-22z" fill="#F6C453"/><rect x="58.5" y="40" width="3" height="10" fill="'+d+'"/>',
+ mug:'<path d="M32 40h50v38a20 20 0 0 1-20 20H52a20 20 0 0 1-20-20z" fill="'+k+'"/><path d="M82 52h8a12 12 0 0 1 0 24h-8" fill="none" stroke="'+k+'" stroke-width="8"/><g fill="'+w+'" opacity=".7"><circle cx="46" cy="62" r="2"/><circle cx="62" cy="76" r="2"/><circle cx="70" cy="54" r="2"/><circle cx="50" cy="84" r="2"/></g>',
+ vase:'<path d="M54 20h12v22c18 10 22 26 20 44a12 12 0 0 1-12 12H46a12 12 0 0 1-12-12c-2-18 2-34 20-44z" fill="'+k+'"/><path d="M60 22c-4-8 0-14 8-16" stroke="#6E8F6E" stroke-width="3" fill="none"/><ellipse cx="68" cy="6" rx="6" ry="4" fill="#E3A5AB"/>',
+ bottle:'<rect x="50" y="14" width="20" height="16" rx="4" fill="'+d+'"/><rect x="42" y="30" width="36" height="74" rx="12" fill="'+k+'"/><rect x="48" y="56" width="24" height="26" rx="4" fill="'+w+'" opacity=".85"/>',
+ book:'<rect x="30" y="20" width="62" height="82" rx="6" fill="'+k+'"/><rect x="30" y="20" width="10" height="82" rx="4" fill="'+d+'" opacity=".25"/><rect x="50" y="38" width="30" height="4" rx="2" fill="'+w+'"/><rect x="50" y="48" width="20" height="4" rx="2" fill="'+w+'"/>',
+ tube:'<path d="M40 30h40l-4 70H44z" fill="'+k+'"/><rect x="42" y="16" width="36" height="16" rx="4" fill="'+d+'"/><rect x="48" y="52" width="24" height="22" rx="4" fill="'+w+'" opacity=".85"/>',
+ cushion:'<path d="M26 34c20-8 48-8 68 0 6 18 6 34 0 52-20 8-48 8-68 0-6-18-6-34 0-52z" fill="'+k+'"/><path d="M40 46c14 4 26 4 40 0M40 62c14 4 26 4 40 0M40 78c14 4 26 4 40 0" stroke="'+w+'" stroke-width="2" opacity=".6" fill="none"/>'
+ };
+ return s+m[t]+'</svg>';
+}
+function inr(n){return "₹"+Math.round(n).toLocaleString("en-IN")}
+var cart={},coupon=0,filter="All";
+document.getElementById("h1").innerHTML=art("vase","#8E7BC7");
+document.getElementById("h2").innerHTML=art("candle","#C98B94");
+document.getElementById("cats").innerHTML=CATS.map(function(c){return '<button class="cat" style="background:var(--'+c[1]+')" data-cat="'+c[0]+'"><div><strong>'+c[0]+'</strong><br><span>'+P.filter(function(p){return p.c==c[0]}).length+' items</span></div>'+art(c[2],c[3])+'</button>'}).join("");
+var names=["All"].concat(CATS.map(function(c){return c[0]}));
+function tabs(){document.getElementById("tabs").innerHTML=names.map(function(n){return '<button class="tab" aria-pressed="'+(n==filter)+'" data-f="'+n+'">'+n+'</button>'}).join("")}
+function grid(){
+ document.getElementById("grid").innerHTML=P.filter(function(p){return filter=="All"||p.c==filter}).map(function(p){
+ return '<article class="card"><div class="thumb" style="background:var(--'+p.bg+')">'+(p.b?'<span class="badge">'+p.b+'</span>':'')+art(p.t,p.k)+'</div><h3>'+p.n+'</h3><div class="meta">★ '+p.r+' · '+p.c+'</div><div class="row"><span class="price">'+inr(p.p)+(p.o?'<s>'+inr(p.o)+'</s>':'')+'</span><button class="add" data-id="'+p.id+'">Add</button></div></article>'}).join("");
+}
+function find(id){return P.filter(function(p){return p.id==id})[0]}
+function add(id,q){cart[id]=(cart[id]||0)+(q||1);draw()}
+function draw(){
+ var ids=Object.keys(cart).filter(function(i){return cart[i]>0}),sub=0,n=0;
+ ids.forEach(function(i){sub+=find(i).p*cart[i];n+=cart[i]});
+ document.getElementById("count").textContent=n;
+ document.getElementById("items").innerHTML=ids.length?ids.map(function(i){var p=find(i);return '<div class="it"><div class="t" style="background:var(--'+p.bg+')">'+art(p.t,p.k)+'</div><div><div style="font-weight:600;line-height:1.3">'+p.n+'</div><div class="qty"><button data-q="-1" data-id="'+i+'" aria-label="Decrease">−</button><span>'+cart[i]+'</span><button data-q="1" data-id="'+i+'" aria-label="Increase">+</button></div></div><div style="font-weight:600">'+inr(p.p*cart[i])+'</div></div>'}).join(""):'<div class="empty">Your cart is empty.<br>Add something from the shop to get started.</div>';
+ var d=sub*coupon,tot=sub-d,left=Math.max(0,1999-tot);
+ document.getElementById("shiptxt").textContent=left>0?"Add "+inr(left)+" more for free shipping":"You’ve unlocked free shipping";
+ document.getElementById("shipbar").style.width=Math.min(100,tot/1999*100)+"%";
+ document.getElementById("sub").textContent=inr(sub);
+ document.getElementById("dlabel").textContent=coupon?"Discount (LUME10)":"";
+ document.getElementById("disc").textContent=coupon?"−"+inr(d):"";
+ document.getElementById("total").textContent=inr(tot);
+}
+function open(on){document.getElementById("drawer").classList.toggle("on",on);document.getElementById("scrim").classList.toggle("on",on);document.getElementById("drawer").setAttribute("aria-hidden",!on)}
+document.addEventListener("click",function(e){
+ var t=e.target.closest("button");if(!t)return;
+ if(t.dataset.f){filter=t.dataset.f;tabs();grid()}
+ else if(t.dataset.cat){filter=t.dataset.cat;tabs();grid();document.getElementById("shop").scrollIntoView()}
+ else if(t.classList.contains("add")){add(t.dataset.id);t.textContent="Added";t.classList.add("done");setTimeout(function(){t.textContent="Add";t.classList.remove("done")},1200)}
+ else if(t.dataset.q){add(t.dataset.id,+t.dataset.q)}
+ else if(t.id=="open"){open(true)}
+ else if(t.id=="close"){open(false)}
+ else if(t.id=="bundle"){add(1);add(2);add(5);open(true)}
+ else if(t.id=="capply"){var v=document.getElementById("cin").value.trim().toUpperCase();coupon=v=="LUME10"?.1:0;t.textContent=coupon?"Applied":"Invalid";setTimeout(function(){t.textContent="Apply"},1400);draw()}
+ else if(t.id=="checkout"){t.textContent="Demo only: no payment taken";setTimeout(function(){t.textContent="Checkout"},1800)}
+});
+document.getElementById("scrim").onclick=function(){open(false)};
+document.addEventListener("keydown",function(e){if(e.key=="Escape")open(false)});
+document.getElementById("nl").onsubmit=function(e){e.preventDefault();document.getElementById("nlmsg").textContent="You’re on the list. Check your inbox to confirm.";e.target.reset()};
+tabs();grid();draw();
+</script>
+</body>
+</html>

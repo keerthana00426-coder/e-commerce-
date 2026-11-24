@@ -1,4 +1,6 @@
 # e-commerce-
+student name: keerthana,Rollno:N26V01A0164,
+Deploy link:https://vocal-zuccutto-c8abd9.netlify.app 
 # 🛍️ Lumé – E-Commerce Website
 
 ### Small Things for Slow Days
